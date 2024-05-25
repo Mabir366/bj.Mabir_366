@@ -1124,22 +1124,27 @@ func editUlasan(arrJ *tabJob, pos, per *string) {
 	}
 }
 func hapusUlasan(arrJ *tabJob, pos, per *string) {
-	/* IS. Terdefinisi array arrJ yang berisi Jmax bilangan bulat dan dua string pos dan per
-	   FS. Menghapus komentar pada suatu pekerjaan dan perusahaan*/
-	var i, j int
+    /* IS. Terdefinisi array arrJ yang berisi Jmax bilangan bulat dan dua string pos dan per
+       FS. Menghapus komentar pada suatu pekerjaan dan perusahaan*/
+    var i, j int
 
-	for i = 0; i < len(*arrJ); i++ {
-		if (*arrJ)[i].posisi == *pos && (*arrJ)[i].perus == *per{
-			for j = 0; j < len((*arrJ)[i].Rating.user); j++ {
-				if (*arrJ)[i].Rating.user[j] == U {
-					(*arrJ)[i].Rating.user[j] = (*arrJ)[i].Rating.user[len((*arrJ)[i].Rating.user)-1]
-					(*arrJ)[i].Rating.rating[j] = (*arrJ)[i].Rating.rating[len((*arrJ)[i].Rating.rating)-1]
-					(*arrJ)[i].Rating.message[j] = (*arrJ)[i].Rating.message[len((*arrJ)[i].Rating.message)-1]
+    for i = 0; i < len(*arrJ); i++ {
+        if (*arrJ)[i].posisi == *pos && (*arrJ)[i].perus == *per {
+            for j = 0; j < kmax; j++ {
+                if (*arrJ)[i].Rating.user[j] == U {
+                    for k := j; k < kmax-1; k++ {
+                        (*arrJ)[i].Rating.user[k] = (*arrJ)[i].Rating.user[k+1]
+                        (*arrJ)[i].Rating.rating[k] = (*arrJ)[i].Rating.rating[k+1]
+                        (*arrJ)[i].Rating.message[k] = (*arrJ)[i].Rating.message[k+1]
+                    }
+                    (*arrJ)[i].Rating.user[kmax-1] = ""
+                    (*arrJ)[i].Rating.rating[kmax-1] = 0
+                    (*arrJ)[i].Rating.message[kmax-1] = ""
 
-					fmt.Println("Ulasan pengguna berhasil dihapus!")
-				}
-			}
-
-		}
-	}
+                    fmt.Println("Ulasan pengguna berhasil dihapus!")
+                    return
+                }
+            }
+        }
+    }
 }
