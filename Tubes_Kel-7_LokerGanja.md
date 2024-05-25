@@ -532,7 +532,7 @@ func Gaji(arrJ *tabJob) {
 				pos = arrJ[no-1].posisi
 				per = arrJ[no-1].perus
 				tambahUlasan(arrJ, &pos, &per)
-				fmt.Println("Apakah mau dihapus (Ketik '1'), diedit (Ketik '2'), atau balik ke menu utama (Ketik '3')?")
+				fmt.Println("Apakah mau diedit (Ketik '1'), dihapus (Ketik '2'), atau balik ke menu utama (Ketik '3')?")
 				fmt.Scan(&d)
 				if d == 1{
                    editUlasan(arrJ,&pos,&per)
@@ -775,7 +775,7 @@ func Pilihposisi(arrJ *tabJob, p, q *string, no *int) {
 			pos = arrJ[*no].posisi
 			per = arrJ[*no].perus
 			tambahUlasan(arrJ, &pos, &per)
-			fmt.Println("Apakah mau dihapus (Ketik '1'), diedit (Ketik '2'), atau balik ke menu utama (Ketik '3')?")
+			fmt.Println("Apakah mau diedit (Ketik '1'), dihapus (Ketik '2'), atau balik ke menu utama (Ketik '3')?")
 				fmt.Scan(&d)
 				if d == 1{
                    editUlasan(arrJ,&pos,&per)
@@ -1016,7 +1016,7 @@ func Waktu(arrJ *tabJob) {
 				pos = arrJ[no].posisi
 				per = arrJ[no].perus
 				tambahUlasan(arrJ, &pos, &per)
-				fmt.Println("Apakah mau dihapus (Ketik '1'), diedit (Ketik '2'), atau balik ke menu utama (Ketik '3')?")
+				fmt.Println("Apakah mau diedit (Ketik '1'), dihapus (Ketik '2'), atau balik ke menu utama (Ketik '3')?")
 				fmt.Scan(&d)
 				if d == 1{
                    editUlasan(arrJ,&pos,&per)
@@ -1143,4 +1143,3 @@ func hapusUlasan(arrJ *tabJob, pos, per *string) {
 		}
 	}
 }
-
