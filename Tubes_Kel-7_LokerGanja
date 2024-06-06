@@ -40,50 +40,55 @@ var quit bool
 var y string
 
 var arrJ tabJob
-var NP,KS,TBT,U string
+var NP, KS, TBT, U string
 
+func main() {
+	login()
+}
 
-func main(){
-    login()
-} 
-
-func pelamar(){
+func pelamar() {
 	/* IS. -
-	   FS. program berakhir oleh pengguna dengan memilih mau cari kerja atau tidak */ 
-quit = false
-for !quit{
-	menu()
-	fmt.Print("Ingin mencari posisi pekerjaan yang cocok untuk kamu? (Ketik 'Y' atau 'N')", " ")
-	fmt.Scan(&y)
-	if y == "N"{
-       quit = true
-	}else if y == "Y"{
-		infoLoker()
+	   FS. program berakhir oleh pengguna dengan memilih mau cari kerja atau tidak */
+	quit = false
+	for !quit {
+		menu()
+		fmt.Println("==================================================================================")
+		fmt.Print("Ingin mencari posisi pekerjaan yang cocok untuk kamu? (Ketik 'Y' atau 'N')", " ")
+		fmt.Scan(&y)
+		fmt.Println("==================================================================================")
+		if y == "N" {
+			quit = true
+		} else if y == "Y" {
+			clearLine()
+			infoLoker()
+		}
 	}
 }
-}
 
-func menu(){
+func menu() {
 	/* IS. -
 	   FS. Menampilkan menu layar */
-	fmt.Println("------------------------------")
+	fmt.Println("--------------------------------")
 	fmt.Println("Selamat Datang di Aplikasi Ganja")
-	fmt.Println("------------------------------")
+	fmt.Println("--------------------------------")
 	fmt.Println("Sudah sore waktunya matahari redup")
 	fmt.Println("Bersiap malam besok hari rabu")
 	fmt.Println("Aku percaya kamu pasti sanggup")
 	fmt.Println("Menyerah bukanlah moto hidupmu")
 }
 
-func login(){
+func login() {
 	/* IS. -
-	   FS. Telah mendaftar dan berhasil login untuk mengakses fungsi pelamar(), serta keluar dari login */ 
-	var keluar,benar bool
+	   FS. Telah mendaftar dan berhasil login untuk mengakses fungsi pelamar(), serta keluar dari login */
+	var keluar, benar bool
 	var n int
 	keluar = false
 	for !keluar {
-		fmt.Println("Selamat datang, kami senang bersama anda")
-		fmt.Println("For Your Information, setiap ada spasi, diharapkan untuk tidak mengetik spasi, melainkan menggunakan tanda '_' ")
+		fmt.Println()
+		fmt.Println("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
+		fmt.Println("Selamat datang di Aplikasi Ganja. For Your Information, setiap ada spasi, diharapkan untuk tidak mengetik spasi, melainkan menggunakan tanda '_' ")
+		fmt.Println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+		fmt.Println()
 		fmt.Println("======= Akun Login =======")
 		fmt.Println("1. Daftar")
 		fmt.Println("2. Masuk")
@@ -91,151 +96,118 @@ func login(){
 		fmt.Print("Pilih Menu : ", " ")
 		fmt.Scan(&n)
 		if n == 1 {
-			fmt.Print("Nama Pengguna: ")
+			fmt.Println("======================")
+			fmt.Print("Nama Pengguna:", " ")
 			fmt.Scan(&NP)
-			fmt.Print("Username : ")
+			fmt.Print("Username :", " ")
 			fmt.Scan(&U)
-			fmt.Print("Kata Sandi: ")
+			fmt.Print("Kata Sandi:", " ")
 			fmt.Scan(&KS)
-			fmt.Print("Tanggal - Bulan - Tahun Lahir : ")
+			fmt.Print("Tanggal - Bulan - Tahun Lahir :", " ")
 			fmt.Scan(&TBT)
-				arrL[totSer].NP = NP
-				arrL[totSer].U = U
-				arrL[totSer].KS = KS
-				arrL[totSer].TBT = TBT
-				totSer++
+			fmt.Println("======================")
+			arrL[totSer].NP = NP
+			arrL[totSer].U = U
+			arrL[totSer].KS = KS
+			arrL[totSer].TBT = TBT
+			totSer++
+			clearLine()
+			fmt.Println("vvvvvvvvvvvvvvv")
 			fmt.Println("Sudah terdaftar")
-		}else if n == 2 {
-			fmt.Print("Username : ")
+			fmt.Println("^^^^^^^^^^^^^^^")
+		} else if n == 2 {
+			fmt.Println("==================")
+			fmt.Print("Username :", " ")
 			fmt.Scan(&U)
-			fmt.Print("Kata Sandi: ")
+			fmt.Print("Kata Sandi:", " ")
 			fmt.Scan(&KS)
-			if U == "I_luv_Ganja" && KS == "Admin123"{
+			fmt.Println("==================")
+			if U == "I_luv_Ganja" && KS == "Admin123" {
+				clearLine()
 				fmt.Println("Berhasil Login")
 				pelamar()
 			}
 			benar = MasukanPengguna(U, KS)
-			if benar{
-               fmt.Println("Berhasil Login")
-               pelamar()
-			}else if !benar && !(U == "I_luv_Ganja" && KS == "Admin123"){
+			if benar {
+				clearLine()
+				fmt.Println("vvvvvvvvvvvvvv")
+				fmt.Println("Berhasil Login")
+				fmt.Println("^^^^^^^^^^^^^^")
+				pelamar()
+			} else if !benar && !(U == "I_luv_Ganja" && KS == "Admin123") {
+				clearLine()
+				fmt.Println("vvvvvvvvvvvv")
 				fmt.Println("Belum Login")
+				fmt.Println("^^^^^^^^^^^^")
 			}
 		} else if n == 3 {
 			keluar = true
 		} else {
-			fmt.Println("Salah")
+			fmt.Println("!!!!!!!!")
+			fmt.Println(" Salah")
+			fmt.Println("!!!!!!!!")
 			login()
 		}
 	}
 }
 
-func MasukanPengguna(U,KS string)bool{
+func MasukanPengguna(U, KS string) bool {
 	/* mengembalikan nilai true apabila array Login dari NP dan KS sama dengan inputan login NP dan KS, dan juga menghasilkan nilai false jika sebaliknya */
 	var i int
-	for i = 0;i<totSer;i++{
-		if arrL[i].U == U && arrL[i].KS == KS{
+	for i = 0; i < totSer; i++ {
+		if arrL[i].U == U && arrL[i].KS == KS {
 			return true
 		}
 	}
 	return false
 }
 
-func infoLoker(){
+func infoLoker() {
 	/* IS. -
 	   FS. Menampilkan menu pilihan lowongan pekerjaan dan menerima inputan choice sesuai kebutuhan pengguna */
 	var choice int
-	fmt.Println("Pilih mau cari berdasarkan apa")
+	fmt.Println("===================================")
+	fmt.Println("             Pilih menu            ")
+	fmt.Println("===================================")
 	fmt.Println("1. Berdasarkan posisi")
 	fmt.Println("2. Berdasarkan akreditasi")
 	fmt.Println("3. Berdasarkan gaji")
 	fmt.Println("4. Berdasarkan lokasi")
 	fmt.Println("5. Berdasarkan waktu")
 	fmt.Println("6. Berdasarkan Rating")
-	fmt.Println("7. Keluar")
+	fmt.Println("7. Keluar aja deh")
 	fmt.Println("Mau pilih mana? (Ketik angkanya saja)")
 	fmt.Scan(&choice)
 
-	if choice == 1{
+	if choice == 1 {
+		clearLine()
 		posisiV(&arrJ)
-	}else if choice == 2{
+	} else if choice == 2 {
+		clearLine()
 		Akreditasi(&arrJ)
-	}else if choice == 3{
+	} else if choice == 3 {
+		clearLine()
 		sortGaji(&arrJ)
 		Gaji(&arrJ)
-	}else if choice == 4{
+	} else if choice == 4 {
+		clearLine()
 		Lokasi(&arrJ)
-	}else if choice == 5{
+	} else if choice == 5 {
+		clearLine()
 		Waktu(&arrJ)
-	}else if choice == 6{
+	} else if choice == 6 {
+		clearLine()
 		Rating(&arrJ)
-	}else if choice == 7{
-        return
-	}else {
+	} else if choice == 7 {
+		return
+	} else {
+		fmt.Println("!!!!!!!!")
 		fmt.Println("Invalid!")
+		fmt.Println("!!!!!!!!")
 		infoLoker()
 	}
 
 }
-
-func posisiV(arrJ *tabJob) {
-	/* IS. terdefinisi array arrJn yang berisi data-data sejumlah Jmax pekerjaan
-	   FS. menampilkan daftar posisi pekerjaan yang ada dan memilih posisi */
-	var i, posisi int
-	var kata, x, p string
-	fmt.Println( "Pilihlah posisi yang tertera pada opsi dibawah ini! (Ketik dengan angka saja sesuai dengan posisi yang diinginkan)")
-	hasilPT(arrJ)
-	for i = 0; i < len(*arrJ); i++ {
-		fmt.Printf("%d. %s\n", i+1, arrJ[i].posisi)
-	}
-	fmt.Scan(&posisi)
-	if posisi < 0 && posisi > 9{
-		fmt.Println("Invalid")
-		posisiV(arrJ)
-	}
-	fmt.Print("Apakah Anda tertarik dengan pekerjaan ini? (Ketik 'Yes' atau 'No')", " ")
-	fmt.Scan(&x)
-	if x == "No" {
-		posisiV(arrJ)
-	} else if x == "Yes" {
-		posisi = posisi - 1
-		p = arrJ[posisi].posisi
-		kata = arrJ[posisi].perus
-		Pilihposisi(arrJ, &p, &kata, &posisi)
-	}else {
-		fmt.Println("Invalid")
-		posisiV(arrJ)
-	}
-}
-
-func cekPTpos(arrJ *tabJob, p, q *string) bool {
-	/* Diterima array arrJ yang berisi Jmax bilangan bulat beserta dua string p dan q, mengembalikan TRUE apabila p dan q ditemukan didalam array arrJ menggunakan sequential search */
-	var i, j, k int
-	var ketemu bool
-	ketemu = false
-	i = 0
-	hasilPT(arrJ)
-	for i < len(*arrJ) && !ketemu {
-		if arrJ[i].posisi == *p && arrJ[i].perus == *q {
-			ketemu = true
-			output(arrJ, &i, &j, &k)
-		}
-		i++
-	}
-	return ketemu
-}
-
-func output(arrJ *tabJob, i, j, k *int) {
-	/* IS. Terdefinisi data-data arrJ yang berisi Jmax bilangan bulat dan tiga bilangan bulat i,j, dan k
-       FS. Mengembalikan data-data array arrJ */
-	fmt.Println("Nama Pekerjaan :", arrJ[*i].posisi, "\nDeskripsi :", arrJ[*i].Description, "\nPerusahaan: ", arrJ[*i].perus, "\nLokasi: ", arrJ[*i].lokasi, "\nGaji: ", arrJ[*i].gaji, "\nAkreditasi: ", arrJ[*i].akreditasi, "\nWaktu:", arrJ[*i].waktu, "\nPersyaratan :", arrJ[*i].persyaratan)
-	fmt.Println()
-	fmt.Println("Ulasan : ")
-	fmt.Println()
-	for *k = 0; *k < len((*arrJ)[*i].Rating.user); *k++ {
-		fmt.Println("Rating : ", arrJ[*i].Rating.rating[*k], "\nUser : ", arrJ[*i].Rating.user[*k], "\nPesan :", arrJ[*i].Rating.message[*k])
-	}
-	}
 
 func hasilPT(arrJ *tabJob) {
 	/* IS. Terdefinisi data-data arrJ yang berisi Jmax bilangan bulat
@@ -465,206 +437,142 @@ func hasilPT(arrJ *tabJob) {
 	}
 }
 
-func Gaji(arrJ *tabJob) {
-	/* IS. Terdefinisi array arrJ yang berisi Jmax bilangan bulat
-	   FS. Mengembalikan data-data gaji dan memilih gaji */
-	var g, gaji, o, no,d int
-	var y, x, p, k, pos, per,e string
-	var i int
-	var h, found bool
-
+func posisiV(arrJ *tabJob) {
+	/* IS. terdefinisi array arrJn yang berisi data-data sejumlah Jmax pekerjaan
+	   FS. menampilkan daftar posisi pekerjaan yang ada dan memilih posisi */
+	var i, posisi int
+	var kata, x, p string
+	fmt.Println("===================================================================================================================")
+	fmt.Println(" Pilihlah posisi yang tertera pada opsi dibawah ini! (Ketik dengan angka saja sesuai dengan posisi yang diinginkan)")
+	fmt.Println("===================================================================================================================")
+	hasilPT(arrJ)
 	for i = 0; i < len(*arrJ); i++ {
 		fmt.Printf("%d. %s\n", i+1, arrJ[i].posisi)
-		fmt.Println()
-		fmt.Printf("Gaji: %d\n", arrJ[i].gaji)
-		fmt.Println()
 	}
-	fmt.Println("Pilih range gaji yang dinginkan :")
-	fmt.Println("1) 1jt - 4jt")
-	fmt.Println("2) 5jt - 8jt")
-	fmt.Println("3) 9jt - 12jt")
-	fmt.Println("4) 13jt - 16jt")
-	fmt.Println("5) 17jt - 20jt")
-	fmt.Print("Pilihan: ")
-	fmt.Scan(&g)
-	if g < 1 && g > 5{
+	fmt.Scan(&posisi)
+	if posisi < 0 && posisi > 9 {
+		fmt.Println("!!!!!!!")
 		fmt.Println("Invalid")
-		Gaji(arrJ)
+		fmt.Println("!!!!!!!")
+		posisiV(arrJ)
 	}
-	found = false
-	if g >= 1 && g <= 5 {
-		fmt.Println("Info Gaji yang cocok untuk kamu")
-		for i = 0; i < len(*arrJ); i++ {
-			gaji = arrJ[i].gaji
-			if (g == 1 && gaji >= 1000000 && gaji <= 4000000) || (g == 2 && gaji >= 5000000 && gaji <= 8000000) || (g == 3 && gaji >= 9000000 && gaji <= 12000000) || (g == 4 && gaji >= 13000000 && gaji <= 16000000) || (g == 5 && gaji >= 17000000 && gaji <= 20000000) {
-				fmt.Printf("%d. %s\n", i+1, arrJ[i].posisi)
-				fmt.Println()
-				fmt.Printf("Gaji: %d\n", gaji)
-				fmt.Println()
-				found = true
-			}
-		}
-		if !found {
-			fmt.Println("Maaf, kami tidak menemukan gaji yang tapat untuk kamu")
-			fmt.Println("Mau balik ke menu utama? (Ketik Y or N)")
-			fmt.Scan(&x)
-			if x == "Y" {
-				infoLoker()
-			} else if x == "N" {
-				Gaji(arrJ)
-			}
-
-		}
-	}
-	fmt.Print("Apakah tertarik dengan gaji tersebut? (Ketik Y or N)", " ")
-	fmt.Scan(&y)
-	if y == "Y" {
-		fmt.Println("Pilih nomor yang sesuai dengan porsi kamu :")
-		fmt.Scan(&no)
-		no = no - 1
-		p = arrJ[no].posisi
-		o = arrJ[no].gaji
-		h = cekPTgaji(arrJ, &p, &o)
-		if h {
-			fmt.Println("Mau tambah Komen? (Ketik Y or N)")
-			fmt.Scan(&k)
-			if k == "Y" {
-				pos = arrJ[no-1].posisi
-				per = arrJ[no-1].perus
-				tambahUlasan(arrJ, &pos, &per)
-				fmt.Println("Apakah mau diedit (Ketik '1'), dihapus (Ketik '2'), atau balik ke menu utama (Ketik '3')?")
-				fmt.Scan(&d)
-				if d == 1{
-                   editUlasan(arrJ,&pos,&per)
-				   fmt.Println("Balik ke menu utama (Ketik 'Y') ?")
-				   fmt.Scan(&e)
-				   if e == "Y"{
-					infoLoker()
-				   }
-				}else if d == 2{
-					hapusUlasan(arrJ,&pos,&per)
-					fmt.Println("Balik ke menu utama (Ketik 'Y') ?")
-					fmt.Scan(&e)
-					if e == "Y"{
-					 infoLoker()
-					}
-				}else if d == 3{
-					infoLoker()
-				}else {
-						fmt.Println("Invalid")
-						Gaji(arrJ)
-				}
-			}
-		}
-	} else if k == "N" {
-		fmt.Println("Baiklah, Apakah mau cari gaji lainnya (Ketik Y or N)")
-		fmt.Scan(&x)
-		if x == "Y" {
-			Gaji(arrJ)
-		} else if x == "N" {
-			fmt.Println("Baiklah, kembali ke menu utama")
-			infoLoker()
-		}else{
-			fmt.Println("Invalid")
-		    Gaji(arrJ)
-		}
-	}else {
-		fmt.Println("Invalid")
-		Gaji(arrJ)
+	fmt.Println("=========================================================================")
+	fmt.Print("Apakah Anda tertarik dengan pekerjaan ini? (Ketik 'Yes' atau 'No')", " ")
+	fmt.Scan(&x)
+	fmt.Println("=========================================================================")
+	if x == "No" {
+		clearLine()
+		fmt.Println("Oke, balik ke menu utama")
+		infoLoker()
+	} else if x == "Yes" {
+		posisi = posisi - 1
+		p = arrJ[posisi].posisi
+		kata = arrJ[posisi].perus
+		Pilihposisi(arrJ, &p, &kata, &posisi)
+	} else {
+		clearLine()
+		fmt.Println("!!!!!!!!!")
+		fmt.Println(" Invalid")
+		fmt.Println("!!!!!!!!!")
+		posisiV(arrJ)
 	}
 }
 
-func Rating(arrJ *tabJob) {
-	/* IS. Terdefinisi array arrJ yang berisi Jmax bilangan bulat
-	   FS. Mengembalikan data-data rating dan memilih rating */
-	hasilPT(arrJ)
-	var i, j, k, g, rat, no int
-	var y, us, mes, x, pos, per string
-	var found bool
-	for i = 0; i < len(*arrJ); i++ {
-		fmt.Printf("%d. %s\n", i+1, arrJ[i].posisi)
-		fmt.Println()
-		fmt.Printf("Perusahaan %d: %s\n", j+1, arrJ[i].perus)
-		fmt.Println()
-		for k = 0; k < len((*arrJ)[i].Rating.user); k++ {
-			fmt.Printf("Rating %d: %d\n", k+1, arrJ[i].Rating.rating[k])
-			fmt.Println()
-			fmt.Printf("User     : %s\n", arrJ[i].Rating.user[k])
-			fmt.Println()
-			fmt.Printf("Pesan    : %s\n", arrJ[i].Rating.message[k])
-			fmt.Println()
-		}
-	}
-	fmt.Println("Pilih rating yang dinginkan :")
-	fmt.Println("1) Rating 5/5")
-	fmt.Println("2) Rating 4/5")
-	fmt.Println("3) Rating 3/5")
-	fmt.Println("4) Rating 2/5")
-	fmt.Println("5) Rating 1/5")
-	fmt.Print("Pilihan: ")
-	fmt.Scan(&g)
-	if g < 1 && g > 5{
-			fmt.Println("Invalid")
-			Rating(arrJ)
-	}
-	fmt.Println("Hasil yang kami temukan")
-	found = false
-	if g >= 1 && g <= 5 {
-		for i = 0; i < len(*arrJ); i++ {
-			for k = 0; k < len((*arrJ)[i].Rating.user); k++ {
-				rat = arrJ[i].Rating.rating[k]
-				us = arrJ[i].Rating.user[k]
-				mes = arrJ[i].Rating.message[k]
-				if (g == 1 && rat == 5) || (g == 2 && rat == 4) || (g == 3 && rat == 3) || (g == 4 && rat == 2) || (g == 5 && rat == 1) {
-					fmt.Printf("%d. %s\n", i+1, arrJ[i].posisi)
-					fmt.Println()
-					fmt.Printf("Perusahaan :%s\n", arrJ[i].perus)
-					fmt.Println()
-					fmt.Printf("User: %s\n", us)
-					fmt.Println()
-					fmt.Printf("Pesan: %s\n", mes)
-					fmt.Println()
-					found = true
+func Pilihposisi(arrJ *tabJob, p, q *string, no *int) {
+	/* IS. Terdefinisi array arrJ yang berisi Jmax bilangan bulat, dua string p dan q dan satu bilangan bulat no
+	   FS. Memeriksa apakah fungsi cekPTpos valid. Jika valid, maka bisa menambahkan ulasan atau balik ke menu */
+	var k, pos, per, e string
+	var h bool
+	var d int
+	h = cekPTpos(arrJ, p, q)
+	if h {
+		fmt.Println("================================")
+		fmt.Println("Mau tambah Komen? (Ketik Y or N)")
+		fmt.Println("================================")
+		fmt.Scan(&k)
+		if k == "Y" {
+			pos = arrJ[*no].posisi
+			per = arrJ[*no].perus
+			tambahUlasan(arrJ, &pos, &per)
+			fmt.Println("=========================================================================================")
+			fmt.Println("Apakah mau diedit (Ketik '1'), dihapus (Ketik '2'), atau balik ke menu utama (Ketik '3')?")
+			fmt.Println("=========================================================================================")
+			fmt.Scan(&d)
+			if d == 1 {
+				editUlasan(arrJ, &pos, &per)
+				fmt.Println("=================================")
+				fmt.Println("Balik ke menu utama (Ketik 'Y') ?")
+				fmt.Println("=================================")
+				fmt.Scan(&e)
+				if e == "Y" {
+					clearLine()
+					infoLoker()
 				}
-			}
-
-		}
-		if !found {
-			fmt.Println("Maaf, kami tidak menemukan rating yang tepat")
-			fmt.Println("Mau balik ke menu utama? (Ketik Y or N)")
-			fmt.Scan(&x)
-			if x == "Y" {
+			} else if d == 2 {
+				hapusUlasan(arrJ, &pos, &per)
+				fmt.Println("=================================")
+				fmt.Println("Balik ke menu utama (Ketik 'Y') ?")
+				fmt.Println("=================================")
+				fmt.Scan(&e)
+				if e == "Y" {
+					clearLine()
+					infoLoker()
+				}
+			} else if d == 3 {
+				clearLine()
 				infoLoker()
-			} else if x == "N" {
-				Rating(arrJ)
+			} else {
+				clearLine()
+				fmt.Println("!!!!!!!!!!")
+				fmt.Println(" Invalid")
+				fmt.Println("!!!!!!!!!!")
+				Pilihposisi(arrJ, p, q, no)
 			}
-		}
-	}
-	fmt.Println("Apakah tertarik dengan rating tersebut? (Ketik Y or N)")
-	fmt.Scan(&y)
-	if y == "Y" {
-		fmt.Println("Pilih nomor berapa")
-		fmt.Scan(&no)
-		no = no - 1
-		pos = arrJ[no].posisi
-		per = arrJ[no].perus
-		Pilihposisi(arrJ, &pos, &per, &no)
-	} else if y == "N" {
-		fmt.Println("Baiklah, Apakah mau cari gaji lainnya (Ketik Y or N)")
-		fmt.Scan(&x)
-		if x == "Y" {
-			Rating(arrJ)
-		} else if x == "N" {
+		} else if k == "N" {
+			clearLine()
+			fmt.Println("==============================")
 			fmt.Println("Baiklah, kembali ke menu utama")
+			fmt.Println("==============================")
 			infoLoker()
-		}else {
-			fmt.Println("Invalid")
-			Rating(arrJ)
+		} else {
+			clearLine()
+			fmt.Println("!!!!!!!!!!")
+			fmt.Println(" Invalid")
+			fmt.Println("!!!!!!!!!!")
+			Pilihposisi(arrJ, p, q, no)
 		}
-	}else {
-		fmt.Println("Invalid")
-			Rating(arrJ)
 	}
+}
+
+func cekPTpos(arrJ *tabJob, p, q *string) bool {
+	/* Diterima array arrJ yang berisi Jmax bilangan bulat beserta dua string p dan q, mengembalikan TRUE apabila p dan q ditemukan didalam array arrJ menggunakan sequential search */
+	var i, j, k int
+	var ketemu bool
+	ketemu = false
+	i = 0
+	hasilPT(arrJ)
+	for i < len(*arrJ) && !ketemu {
+		if arrJ[i].posisi == *p && arrJ[i].perus == *q {
+			ketemu = true
+			output(arrJ, &i, &j, &k)
+		}
+		i++
+	}
+	return ketemu
+}
+
+func output(arrJ *tabJob, i, j, k *int) {
+	/* IS. Terdefinisi data-data arrJ yang berisi Jmax bilangan bulat dan tiga bilangan bulat i,j, dan k
+	   FS. Mengembalikan data-data array arrJ */
+	fmt.Println("=============================================")
+	fmt.Println("Nama Pekerjaan :", arrJ[*i].posisi, "\nDeskripsi :", arrJ[*i].Description, "\nPerusahaan: ", arrJ[*i].perus, "\nLokasi: ", arrJ[*i].lokasi, "\nGaji: ", arrJ[*i].gaji, "\nAkreditasi: ", arrJ[*i].akreditasi, "\nWaktu:", arrJ[*i].waktu, "\nPersyaratan :", arrJ[*i].persyaratan)
+	fmt.Println("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
+	fmt.Println("Ulasan : ")
+	fmt.Println()
+	for *k = 0; *k < len((*arrJ)[*i].Rating.user); *k++ {
+		fmt.Println("Rating : ", arrJ[*i].Rating.rating[*k], "\nUser : ", arrJ[*i].Rating.user[*k], "\nPesan :", arrJ[*i].Rating.message[*k])
+	}
+	fmt.Println("=============================================")
 }
 
 func Akreditasi(arrJ *tabJob) {
@@ -672,18 +580,25 @@ func Akreditasi(arrJ *tabJob) {
 	   FS. Mengembalikan data-data akreditasi dan memilih akreditasi */
 	var i, pilih, no int
 	var akred, y, pos, per string
+	fmt.Println("================================")
 	fmt.Print("1) Akreditasi A\n2) Akreditasi B\n3) Akreditasi C\n4) Akreditasi D\n5) Akreditasi E\n")
+	fmt.Println("================================")
 	fmt.Println("Mau akreditasi yang mana nih? (Pilih nomor saja)")
 	fmt.Scan(&pilih)
-	if pilih < 1 && pilih > 5{
-		fmt.Println("Invalid")
-			Akreditasi(arrJ)
+	if pilih < 1 && pilih > 5 {
+		clearLine()
+		fmt.Println("!!!!!!!!!!")
+		fmt.Println(" Invalid")
+		fmt.Println("!!!!!!!!!!")
+		Akreditasi(arrJ)
 	}
 	hasilPT(arrJ)
 	for i = 0; i < len(*arrJ); i++ {
 		akred = arrJ[i].akreditasi
 		if (pilih == 1 && akred == "A") || (pilih == 2 && akred == "B") || (pilih == 3 && akred == "C") || (pilih == 4 && akred == "D") || (pilih == 5 && akred == "E") {
+			fmt.Println("================================")
 			fmt.Printf("%d. %s\n", i+1, arrJ[i].posisi)
+			fmt.Println("================================")
 			fmt.Println()
 			fmt.Printf("Perusahaan : %s\n", arrJ[i].perus)
 			fmt.Println()
@@ -691,157 +606,45 @@ func Akreditasi(arrJ *tabJob) {
 			fmt.Println()
 		}
 	}
-
-	fmt.Println("Apakah ada menemukan akreditasi yang tepat untuk kamu? (Ketik Y or N)")
+	fmt.Println("=======================================================================")
+	fmt.Println(" Apakah ada menemukan akreditasi yang tepat untuk kamu? (Ketik Y or N)")
+	fmt.Println("=======================================================================")
 	fmt.Scan(&y)
 	if y == "Y" {
-		fmt.Println("Pilih nomor :")
+		fmt.Println("===============")
+		fmt.Println("  Pilih nomor ")
+		fmt.Println("===============")
 		fmt.Scan(&no)
 		no = no - 1
 		pos = arrJ[no].posisi
 		per = arrJ[no].perus
 		Pilihposisi(arrJ, &pos, &per, &no)
 	} else if y == "N" {
+		clearLine()
+		fmt.Println("=========================================================")
 		fmt.Println("Belum cocok ya, baik kami kembalikan ke halaman utama ya")
+		fmt.Println("=========================================================")
 		infoLoker()
-	}else {
-		fmt.Println("Invalid")
-			Akreditasi(arrJ)
+	} else {
+		clearLine()
+		fmt.Println("!!!!!!!!!!")
+		fmt.Println(" Invalid")
+		fmt.Println("!!!!!!!!!!")
+		Akreditasi(arrJ)
 	}
 }
-
-func Lokasi(arrJ *tabJob) {
-	/* IS. Terdefinisi array arrJ yang berisi Jmax bilangan bulat
-	   FS. Mengembalikan data-data lokasi dan memilih lokasi */
-	var i, pilih, no int
-	var locad, y, pos, per,x string
-	fmt.Println("Pilih lokasi yang cocok untuk kamu")
-	fmt.Print("1) Jakarta\n2) Bandung\n3) Medan\n4) Surabaya\n5) Palembang\n6) Denpasar\n7) Yogyakarta\n 8) Pontianak\n 9) Semarang")
-	fmt.Scan(&pilih)
-	if pilih < 1 && pilih > 9{
-		fmt.Println("Invalid")
-			Lokasi(arrJ)
-	}
-	hasilPT(arrJ)
-	for i = 0; i < len(*arrJ); i++ {
-		locad = arrJ[i].lokasi
-		if (pilih == 1 && locad == "Jakarta") || (pilih == 2 && locad == "Bandung") || (pilih == 3 && locad == "Medan") || (pilih == 4 && locad == "Suarabaya") || (pilih == 5 && locad == "Palembang") || (pilih == 6 && locad == "Denpasar") || (pilih == 7 && locad == "Yogyakarta") || (pilih == 8 && locad == "Pontianak") ||  (pilih == 9 && locad == "Semarang"){
-			fmt.Printf("%d. %s\n", i+1, arrJ[i].posisi)
-			fmt.Println()
-			fmt.Printf("Perusahaan : %s\n", arrJ[i].perus)
-			fmt.Println()
-			fmt.Printf("Lokasi :%s\n", arrJ[i].lokasi)
-			fmt.Println()
-		}
-	}
-	fmt.Println("Apakah ada menemukan lokasi yang tepat untuk kamu? (Ketik Y or N)")
-	fmt.Scan(&y)
-	if y == "Y" {
-		fmt.Println("Pilih Nomor :")
-		fmt.Scan(&no)
-		no = no - 1
-		pos = arrJ[no].posisi
-		per = arrJ[no].perus
-		Pilihposisi(arrJ, &pos, &per, &no)
-	} else if y == "N" {
-		fmt.Println("Baiklah, Apakah mau cari lokasi lainnya (Ketik Y or N)")
-		fmt.Scan(&x)
-		if x == "Y" {
-			Lokasi(arrJ)
-		} else if x == "N" {
-			fmt.Println("Baiklah, kembali ke menu utama")
-			infoLoker()
-		}else {
-			fmt.Println("Invalid")
-			Lokasi(arrJ)
-		}
-	}else{
-		fmt.Println("Invalid")
-			Lokasi(arrJ)
-	}
-}
-
-func Pilihposisi(arrJ *tabJob, p, q *string, no *int) {
-	/* IS. Terdefinisi array arrJ yang berisi Jmax bilangan bulat, dua string p dan q dan satu bilangan bulat no
-	   FS. Memeriksa apakah fungsi cekPTpos valid. Jika valid, maka bisa menambahkan ulasan atau balik ke menu */
-	var k, pos, per,e string
-	var h bool
-	var d int
-	h = cekPTpos(arrJ, p, q)
-	if h {
-		fmt.Println("Mau tambah Komen? (Ketik Y or N)")
-		fmt.Scan(&k)
-		if k == "Y" {
-			pos = arrJ[*no].posisi
-			per = arrJ[*no].perus
-			tambahUlasan(arrJ, &pos, &per)
-			fmt.Println("Apakah mau diedit (Ketik '1'), dihapus (Ketik '2'), atau balik ke menu utama (Ketik '3')?")
-				fmt.Scan(&d)
-				if d == 1{
-                   editUlasan(arrJ,&pos,&per)
-				   fmt.Println("Balik ke menu utama (Ketik 'Y') ?")
-				   fmt.Scan(&e)
-				   if e == "Y"{
-					infoLoker()
-				   }
-				}else if d == 2{
-					hapusUlasan(arrJ,&pos,&per)
-					fmt.Println("Balik ke menu utama (Ketik 'Y') ?")
-					fmt.Scan(&e)
-					if e == "Y"{
-					 infoLoker()
-					}
-				}else if d == 3{
-					infoLoker()
-				}else {
-					fmt.Println("Invalid")
-			        Pilihposisi(arrJ,p,q,no)
-				}
-		}else if k == "N"{
-			fmt.Println("Baiklah, kembali ke menu utama")
-			infoLoker()
-		}else {
-			fmt.Println("Invalid")
-			Pilihposisi(arrJ,p,q,no)
-		}
-	}
-}
-
-func cekPTgaji(arrJ *tabJob, p *string, q *int) bool {
-		/* Diterima array arrJ yang sudah terurut berdasarkan gaji dan berisi Jmax bilangan bulat beserta dua string p dan q,
-		   mengembalikan TRUE apabila p dan q ditemukan di dalam array arrJ menggunakan binary search */
-		var awal, akhir, tengah,i int
-		awal = 0
-		akhir = len(*arrJ) - 1
-		searchSortGajiAscending(arrJ)
-	
-		for i = 0; i < len(arrJ); i++{
-			if arrJ[i].posisi == *p{
-		for awal <= akhir {
-			tengah = (awal + akhir) / 2
-			if arrJ[tengah].gaji == *q {
-				output(arrJ, &tengah, &awal, &akhir)
-				return true
-			} else if  arrJ[tengah].gaji < *q {
-				awal = tengah + 1
-			} else {
-				akhir = tengah - 1
-			}
-		}
-		}
-	}
-		return false
-	}
 
 func sortGaji(arrJ *tabJob) {
-	/* IS. terdefinisi array arrJ yang berisi Jmax bilangan bulat 
+	/* IS. terdefinisi array arrJ yang berisi Jmax bilangan bulat
 	   FS. array arrJ bagian gaji terurut secara DESCENDING dan ASCENDING dengan menggunakan algoritma selection sort */
-	var pass, idx,no, i int
+	var pass, idx, no, i int
 	var temp string
 	hasilPT(arrJ)
+	fmt.Println("====================")
 	fmt.Println("Mau terurut gimana?\n 1) Besar ke kecil\n2) Kecil ke besar")
+	fmt.Println("====================")
 	fmt.Scan(&no)
-	if no == 1{
+	if no == 1 {
 		pass = 1
 		for pass <= len(*arrJ)-1 {
 			idx = pass - 1
@@ -877,33 +680,14 @@ func sortGaji(arrJ *tabJob) {
 			arrJ[idx].posisi = temp
 			pass++
 		}
-	}else {
-		fmt.Println("Invalid")
+	} else {
+		clearLine()
+		fmt.Println("!!!!!!!!!!")
+		fmt.Println(" Invalid")
+		fmt.Println("!!!!!!!!!!")
 		sortGaji(arrJ)
 	}
 }
-
-func searchSortGajiAscending(arrJ *tabJob){
-	var pass, idx, i int
-	var temp string
-	hasilPT(arrJ)
-	pass = 1
-		for pass <= len(*arrJ)-1 {
-			idx = pass - 1
-			i = pass
-			for i < len(*arrJ) {
-				if arrJ[idx].gaji > arrJ[i].gaji {
-					idx = i
-				}
-				i++
-			}
-			swap(&arrJ[pass-1].gaji, &arrJ[idx].gaji)
-			temp = arrJ[pass-1].posisi
-			arrJ[pass-1].posisi = arrJ[idx].posisi
-			arrJ[idx].posisi = temp
-			pass++
-		}
-	}
 
 func swap(a, b *int) {
 	/* IS. Terdefinisi 2 buah bilangan bulat a dan b
@@ -914,12 +698,460 @@ func swap(a, b *int) {
 	*b = temp
 }
 
-func sortRating(arrJ *tabJob) {
-	/* IS. terdefinisi array arrJ yang berisi Jmax bilangan bulat 
-	   FS. array arrJ bagian rating terurut secara DESCENDING dan ASCENDING dengan menggunakan algoritma insertion sort */
-	var j, i, idx, key,no int
+func Gaji(arrJ *tabJob) {
+	/* IS. Terdefinisi array arrJ yang berisi Jmax bilangan bulat
+	   FS. Mengembalikan data-data gaji dan memilih gaji */
+	var g, gaji, o, no, d int
+	var y, x, p, k, pos, per, e string
+	var i int
+	var h, found bool
+
+	for i = 0; i < len(*arrJ); i++ {
+		fmt.Printf("%d. %s\n", i+1, arrJ[i].posisi)
+		fmt.Println()
+		fmt.Printf("Gaji: %d\n", arrJ[i].gaji)
+		fmt.Println()
+	}
+	fmt.Println("==================================")
+	fmt.Println(" Pilih range gaji yang dinginkan ")
+	fmt.Println("==================================")
+	fmt.Println("1) 1jt - 4jt")
+	fmt.Println("2) 5jt - 8jt")
+	fmt.Println("3) 9jt - 12jt")
+	fmt.Println("4) 13jt - 16jt")
+	fmt.Println("5) 17jt - 20jt")
+	fmt.Println("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
+	fmt.Print("Pilihan: ", " ")
+	fmt.Scan(&g)
+	fmt.Println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+	if g < 1 && g > 5 {
+		clearLine()
+		fmt.Println("!!!!!!!")
+		fmt.Println("Invalid")
+		fmt.Println("!!!!!!!")
+		Gaji(arrJ)
+	}
+	found = false
+	if g >= 1 && g <= 5 {
+		fmt.Println("==================================")
+		fmt.Println("  Info Gaji yang cocok untuk kamu")
+		fmt.Println("==================================")
+		for i = 0; i < len(*arrJ); i++ {
+			gaji = arrJ[i].gaji
+			if (g == 1 && gaji >= 1000000 && gaji <= 4000000) || (g == 2 && gaji >= 5000000 && gaji <= 8000000) || (g == 3 && gaji >= 9000000 && gaji <= 12000000) || (g == 4 && gaji >= 13000000 && gaji <= 16000000) || (g == 5 && gaji >= 17000000 && gaji <= 20000000) {
+				fmt.Printf("%d. %s\n", i+1, arrJ[i].posisi)
+				fmt.Printf("    Gaji : %d\n", gaji)
+				fmt.Println()
+				found = true
+			}
+		}
+		if !found {
+			fmt.Println("========================================================")
+			fmt.Println(" Maaf, kami tidak menemukan gaji yang tapat untuk kamu")
+			fmt.Println("========================================================")
+			fmt.Println("Mau balik ke menu utama? (Ketik Y or N)")
+			fmt.Scan(&x)
+			if x == "Y" {
+				clearLine()
+				infoLoker()
+			} else if x == "N" {
+				clearLine()
+				Gaji(arrJ)
+			}
+
+		}
+	}
+	fmt.Println("========================================================")
+	fmt.Print("Apakah tertarik dengan gaji tersebut? (Ketik Y or N)", " ")
+	fmt.Scan(&y)
+	fmt.Println("========================================================")
+
+	if y == "Y" {
+		fmt.Println("========================================================")
+		fmt.Println("       Pilih nomor yang sesuai dengan porsi kamu ")
+		fmt.Println("========================================================")
+		fmt.Scan(&no)
+		no = no - 1
+		p = arrJ[no].posisi
+		o = arrJ[no].gaji
+		h = cekPTgaji(arrJ, &p, &o)
+		if h {
+			fmt.Println("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
+			fmt.Println(" Mau tambah Komen? (Ketik Y or N)")
+			fmt.Println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+			fmt.Scan(&k)
+			if k == "Y" {
+				clearLine()
+				pos = arrJ[no-1].posisi
+				per = arrJ[no-1].perus
+				tambahUlasan(arrJ, &pos, &per)
+				fmt.Println("===========================================================================================")
+				fmt.Println(" Apakah mau diedit (Ketik '1'), dihapus (Ketik '2'), atau balik ke menu utama (Ketik '3')?")
+				fmt.Println("===========================================================================================")
+				fmt.Scan(&d)
+				if d == 1 {
+					editUlasan(arrJ, &pos, &per)
+					fmt.Println("===================================")
+					fmt.Println("  Balik ke menu utama (Ketik 'Y') ?")
+					fmt.Println("===================================")
+					fmt.Scan(&e)
+					if e == "Y" {
+						clearLine()
+						infoLoker()
+					}
+				} else if d == 2 {
+					hapusUlasan(arrJ, &pos, &per)
+					fmt.Println("===================================")
+					fmt.Println(" Balik ke menu utama (Ketik 'Y') ?")
+					fmt.Println("===================================")
+					fmt.Scan(&e)
+					if e == "Y" {
+						clearLine()
+						infoLoker()
+					}
+				} else if d == 3 {
+					clearLine()
+					infoLoker()
+				} else {
+					clearLine()
+					fmt.Println("!!!!!!!!!!")
+					fmt.Println(" Invalid")
+					fmt.Println("!!!!!!!!!!")
+					Gaji(arrJ)
+				}
+			} else if k == "N" {
+				fmt.Println("==========================")
+				fmt.Println(" Baik, balik ke menu utama")
+				fmt.Println("==========================")
+				infoLoker()
+			}
+		}
+	} else if y == "N" {
+		fmt.Println("======================================================")
+		fmt.Println(" Baiklah, Apakah mau cari gaji lainnya (Ketik Y or N)")
+		fmt.Println("======================================================")
+		fmt.Scan(&x)
+		if x == "Y" {
+			clearLine()
+			Gaji(arrJ)
+		} else if x == "N" {
+			clearLine()
+			fmt.Println("===================================")
+			fmt.Println("   Baiklah, kembali ke menu utama")
+			fmt.Println("===================================")
+			infoLoker()
+		} else {
+			clearLine()
+			fmt.Println("!!!!!!!!!!")
+			fmt.Println(" Invalid")
+			fmt.Println("!!!!!!!!!!")
+			Gaji(arrJ)
+		}
+	} else {
+		clearLine()
+		fmt.Println("!!!!!!!!!!")
+		fmt.Println("  Invalid")
+		fmt.Println("!!!!!!!!!!")
+		Gaji(arrJ)
+	}
+}
+
+func cekPTgaji(arrJ *tabJob, p *string, q *int) bool {
+	/* Diterima array arrJ yang sudah terurut berdasarkan gaji dan berisi Jmax bilangan bulat beserta dua string p dan q,
+	   mengembalikan TRUE apabila p dan q ditemukan di dalam array arrJ menggunakan binary search */
+	var awal, akhir, tengah, i int
+	awal = 0
+	akhir = len(*arrJ) - 1
+	searchSortGajiAscending(arrJ)
+
+	for i = 0; i < len(arrJ); i++ {
+		if arrJ[i].posisi == *p {
+			for awal <= akhir {
+				tengah = (awal + akhir) / 2
+				if arrJ[tengah].gaji == *q {
+					output(arrJ, &tengah, &awal, &akhir)
+					return true
+				} else if arrJ[tengah].gaji < *q {
+					awal = tengah + 1
+				} else {
+					akhir = tengah - 1
+				}
+			}
+		}
+	}
+	return false
+}
+
+func searchSortGajiAscending(arrJ *tabJob) {
+	var pass, idx, i int
+	var temp string
 	hasilPT(arrJ)
+	pass = 1
+	for pass <= len(*arrJ)-1 {
+		idx = pass - 1
+		i = pass
+		for i < len(*arrJ) {
+			if arrJ[idx].gaji > arrJ[i].gaji {
+				idx = i
+			}
+			i++
+		}
+		swap(&arrJ[pass-1].gaji, &arrJ[idx].gaji)
+		temp = arrJ[pass-1].posisi
+		arrJ[pass-1].posisi = arrJ[idx].posisi
+		arrJ[idx].posisi = temp
+		pass++
+	}
+}
+
+func Lokasi(arrJ *tabJob) {
+	/* IS. Terdefinisi array arrJ yang berisi Jmax bilangan bulat
+	   FS. Mengembalikan data-data lokasi dan memilih lokasi */
+	var i, pilih, no int
+	var locad, y, pos, per, x string
+	fmt.Println("==================================")
+	fmt.Println("Pilih lokasi yang cocok untuk kamu")
+	fmt.Println("==================================")
+	fmt.Print("1) Jakarta\n2) Bandung\n3) Medan\n4) Surabaya\n5) Palembang\n6) Denpasar\n7) Yogyakarta\n 8) Pontianak\n 9) Semarang\n")
+	fmt.Print("Mau pilih mana?", " ")
+	fmt.Scan(&pilih)
+	fmt.Println("==================================")
+	if pilih < 1 && pilih > 9 {
+		clearLine()
+		fmt.Println("!!!!!!!!!!")
+		fmt.Println(" Invalid")
+		fmt.Println("!!!!!!!!!!")
+		Lokasi(arrJ)
+	}
+	hasilPT(arrJ)
+	for i = 0; i < len(*arrJ); i++ {
+		locad = arrJ[i].lokasi
+		if (pilih == 1 && locad == "Jakarta") || (pilih == 2 && locad == "Bandung") || (pilih == 3 && locad == "Medan") || (pilih == 4 && locad == "Suarabaya") || (pilih == 5 && locad == "Palembang") || (pilih == 6 && locad == "Denpasar") || (pilih == 7 && locad == "Yogyakarta") || (pilih == 8 && locad == "Pontianak") || (pilih == 9 && locad == "Semarang") {
+			fmt.Println("==================================")
+			fmt.Printf("%d. %s\n", i+1, arrJ[i].posisi)
+			fmt.Println("==================================")
+			fmt.Printf("Perusahaan : %s\n", arrJ[i].perus)
+			fmt.Printf("Lokasi :%s\n", arrJ[i].lokasi)
+			fmt.Println()
+		}
+	}
+	fmt.Println("=======================================================================")
+	fmt.Println("   Apakah ada menemukan lokasi yang tepat untuk kamu? (Ketik Y or N)")
+	fmt.Println("=======================================================================")
+	fmt.Scan(&y)
+	if y == "Y" {
+		fmt.Println("===============")
+		fmt.Println(" Pilih Nomor ")
+		fmt.Println("===============")
+		fmt.Scan(&no)
+		no = no - 1
+		pos = arrJ[no].posisi
+		per = arrJ[no].perus
+		Pilihposisi(arrJ, &pos, &per, &no)
+	} else if y == "N" {
+		fmt.Println("======================================================")
+		fmt.Println("Baiklah, Apakah mau cari lokasi lainnya (Ketik Y or N)")
+		fmt.Println("======================================================")
+		fmt.Scan(&x)
+		if x == "Y" {
+			clearLine()
+			Lokasi(arrJ)
+		} else if x == "N" {
+			clearLine()
+			fmt.Println("==============================")
+			fmt.Println("Baiklah, kembali ke menu utama")
+			fmt.Println("==============================")
+			infoLoker()
+		} else {
+			clearLine()
+			fmt.Println("!!!!!!!!!!")
+			fmt.Println(" Invalid")
+			fmt.Println("!!!!!!!!!!")
+			Lokasi(arrJ)
+		}
+	} else {
+		clearLine()
+		fmt.Println("!!!!!!!!!!")
+		fmt.Println(" Invalid")
+		fmt.Println("!!!!!!!!!!")
+		Lokasi(arrJ)
+	}
+}
+
+func Waktu(arrJ *tabJob) {
+	/* IS. Terdefinisi array arrJ yang berisi Jmax bilangan bulat
+	   FS. Mengembalikan data-data waktu dan memilih waktu */
+	var g int
+	var y, p, waktu, o, k, pos, per, x, e string
+	var i, no, d int
+	var h, found bool
+	hasilPT(arrJ)
+	for i = 0; i < len(*arrJ); i++ {
+		fmt.Println("========================")
+		fmt.Printf("Posisi: %d. %s\n", i+1, arrJ[i].posisi)
+		fmt.Println("========================")
+		fmt.Printf("Waktu : %s\n", arrJ[i].waktu)
+		fmt.Println()
+
+	}
+	fmt.Println("============================")
+	fmt.Println(" Pilih waktu yang dinginkan ")
+	fmt.Print("1) Full Time \n2) Kontrak\n3) Paruh Waktu\n4) Kasual\n")
+	fmt.Println("============================")
+	fmt.Print("Mau pilih mana?", " ")
+	fmt.Scan(&g)
+	fmt.Println("============================")
+	if g < 1 && g > 4 {
+		clearLine()
+		fmt.Println("!!!!!!!!!!")
+		fmt.Println(" Invalid")
+		fmt.Println("!!!!!!!!!!")
+		Waktu(arrJ)
+	}
+	found = false
+	if g >= 1 && g <= 4 {
+		fmt.Println("================================")
+		fmt.Println("Info Waktu yang cocok untuk kamu")
+		fmt.Println("================================")
+		for i = 0; i < len(*arrJ); i++ {
+			waktu = arrJ[i].waktu
+			if (g == 1 && waktu == "Full_Time") || (g == 2 && waktu == "Kontrak") || (g == 3 && waktu == "Paruh_Waktu") || (g == 4 && waktu == "Kasual") {
+				fmt.Println("================================")
+				fmt.Printf("%d. %s\n", i+1, arrJ[i].posisi)
+				fmt.Println("================================")
+				fmt.Printf("Waktu: %s\n", waktu)
+				found = true
+			}
+		}
+		if !found {
+			fmt.Println("======================================================")
+			fmt.Println("Maaf, kami tidak menemukan waktu yang tapat untuk kamu")
+			fmt.Println("======================================================")
+			fmt.Println("Mau balik ke menu utama? (Ketik Y or N)")
+			fmt.Scan(&x)
+			if x == "Y" {
+				clearLine()
+				infoLoker()
+			} else if x == "N" {
+				clearLine()
+				Waktu(arrJ)
+			}
+
+		}
+	}
+	fmt.Println("=====================================================")
+	fmt.Println("Apakah tertarik dengan waktu tersebut? (Ketik Y or N)")
+	fmt.Println("=====================================================")
+	fmt.Scan(&y)
+	if y == "Y" {
+		fmt.Println("================")
+		fmt.Print("Pilih nomor :", " ")
+		fmt.Scan(&no)
+		fmt.Println("================")
+		no = no - 1
+		p = arrJ[no].posisi
+		o = arrJ[no].waktu
+		h = cekPTwaktu(arrJ, &p, &o)
+		if h {
+			fmt.Println("================================")
+			fmt.Println("Mau tambah Komen? (Ketik Y or N)")
+			fmt.Println("================================")
+			fmt.Scan(&k)
+			if k == "Y" {
+				pos = arrJ[no].posisi
+				per = arrJ[no].perus
+				tambahUlasan(arrJ, &pos, &per)
+				fmt.Println("=========================================================================================")
+				fmt.Println("Apakah mau diedit (Ketik '1'), dihapus (Ketik '2'), atau balik ke menu utama (Ketik '3')?")
+				fmt.Println("=========================================================================================")
+				fmt.Scan(&d)
+				if d == 1 {
+					editUlasan(arrJ, &pos, &per)
+					fmt.Println("=========================================")
+					fmt.Println("Balik ke menu utama (Ketik 'Y') ?")
+					fmt.Println("=========================================")
+					fmt.Scan(&e)
+					if e == "Y" {
+						clearLine()
+						infoLoker()
+					}
+				} else if d == 2 {
+					hapusUlasan(arrJ, &pos, &per)
+					fmt.Println("=========================================")
+					fmt.Println("Balik ke menu utama (Ketik 'Y') ?")
+					fmt.Println("=========================================")
+					fmt.Scan(&e)
+					if e == "Y" {
+						clearLine()
+						infoLoker()
+					}
+				} else if d == 3 {
+					clearLine()
+					infoLoker()
+				} else {
+					clearLine()
+					fmt.Println("!!!!!!!!!!")
+					fmt.Println(" Invalid")
+					fmt.Println("!!!!!!!!!!")
+					Waktu(arrJ)
+				}
+			} else if k == "N" {
+				fmt.Println("=====================================================")
+				fmt.Println("Baiklah, Apakah mau cari waktu lainnya (Ketik Y or N)")
+				fmt.Println("=====================================================")
+				fmt.Scan(&x)
+				if x == "Y" {
+					clearLine()
+					Waktu(arrJ)
+				} else if x == "N" {
+					clearLine()
+					fmt.Println("===============================")
+					fmt.Println("Baiklah, kembali ke menu utama")
+					fmt.Println("===============================")
+					infoLoker()
+				} else {
+					clearLine()
+					fmt.Println("!!!!!!!!!!")
+					fmt.Println(" Invalid")
+					fmt.Println("!!!!!!!!!!")
+					Waktu(arrJ)
+				}
+			} else {
+				clearLine()
+				fmt.Println("!!!!!!!!!!")
+				fmt.Println(" Invalid")
+				fmt.Println("!!!!!!!!!!")
+				Waktu(arrJ)
+			}
+		}
+	}
+}
+
+func cekPTwaktu(arrJ *tabJob, p, q *string) bool {
+	/* Diterima array arrJ yang berisi Jmax bilangan bulat beserta dua string p dan q, mengembalikan TRUE apabila p dan q ditemukan didalam array arrJ menggunakan sequential search */
+	var i, j, k int
+	var ketemu bool
+	ketemu = false
+	i = 0
+	hasilPT(arrJ)
+	for i < len(*arrJ) && !ketemu {
+		if arrJ[i].posisi == *p && arrJ[i].waktu == *q {
+			ketemu = true
+			output(arrJ, &i, &j, &k)
+		}
+		i++
+	}
+	return ketemu
+}
+
+func sortRating(arrJ *tabJob) {
+	/* IS. terdefinisi array arrJ yang berisi Jmax bilangan bulat
+	   FS. array arrJ bagian rating terurut secara DESCENDING dan ASCENDING dengan menggunakan algoritma insertion sort */
+	var j, i, idx, key, no int
+	hasilPT(arrJ)
+	fmt.Println("====================")
 	fmt.Println("Mau terurut gimana?\n 1) Besar ke kecil\n2) Kecil ke besar")
+	fmt.Println("====================")
 	fmt.Scan(&no)
 	if no == 1 {
 		for j = 0; j < len(*arrJ); j++ {
@@ -947,145 +1179,155 @@ func sortRating(arrJ *tabJob) {
 			}
 
 		}
-	}else {
-		fmt.Println("Invalid")
+	} else {
+		clearLine()
+		fmt.Println("!!!!!!!!!!")
+		fmt.Println(" Invalid")
+		fmt.Println("!!!!!!!!!!")
 		sortRating(arrJ)
 	}
 }
 
-func Waktu(arrJ *tabJob) {
+func Rating(arrJ *tabJob) {
 	/* IS. Terdefinisi array arrJ yang berisi Jmax bilangan bulat
-	   FS. Mengembalikan data-data waktu dan memilih waktu */
-	var g int
-	var y, p, waktu, o, k, pos, per,x,e string
-	var i, j, no,d int
-	var h, found bool
+	   FS. Mengembalikan data-data rating dan memilih rating */
 	hasilPT(arrJ)
+	var i, k, g, rat, no int
+	var y, us, mes, x, pos, per string
+	var found bool
 	for i = 0; i < len(*arrJ); i++ {
-		fmt.Printf("Posisi: %d. %s\n", i+1, arrJ[i].posisi)
-		fmt.Println()
-		fmt.Printf("Waktu %d: %d\n", j+1, arrJ[i].waktu)
-		fmt.Println()
-
+		fmt.Println("================================")
+		fmt.Printf("%d) %s\n", i+1, arrJ[i].posisi)
+		fmt.Println("================================")
+		fmt.Printf("Perusahaan : %s\n", arrJ[i].perus)
+		fmt.Println("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
+		for k = 0; k < len((*arrJ)[i].Rating.user); k++ {
+			fmt.Printf("Rating %d: %d\n", k+1, arrJ[i].Rating.rating[k])
+			fmt.Printf("User     : %s\n", arrJ[i].Rating.user[k])
+			fmt.Printf("Pesan    : %s\n", arrJ[i].Rating.message[k])
+			fmt.Println()
+		}
+		fmt.Println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 	}
-	fmt.Println("Pilih waktu yang dinginkan :")
-	fmt.Print("1) Full Time \n2) Kontrak\n3) Paruh Waktu\n4) Kasual\n")
+	fmt.Println("================================")
+	fmt.Println("   Pilih rating yang dinginkan ")
+	fmt.Println("================================")
+	fmt.Println("1) Rating 5/5")
+	fmt.Println("2) Rating 4/5")
+	fmt.Println("3) Rating 3/5")
+	fmt.Println("4) Rating 2/5")
+	fmt.Println("5) Rating 1/5")
+	fmt.Println("vvvvvvvvvvvvvvvvvvvvvvvv")
+	fmt.Print("Pilihan: ", " ")
 	fmt.Scan(&g)
-	if g < 1 && g > 4{
-		fmt.Println("Invalid")
-		Waktu(arrJ)
+	fmt.Println("^^^^^^^^^^^^^^^^^^^^^^^^")
+	if g < 1 && g > 5 {
+		clearLine()
+		fmt.Println("!!!!!!!!!!")
+		fmt.Println(" Invalid")
+		fmt.Println("!!!!!!!!!!")
+		Rating(arrJ)
 	}
+	fmt.Println("================================")
+	fmt.Println("     Hasil yang kami temukan")
+	fmt.Println("================================")
 	found = false
-	if g >= 1 && g <= 4 {
-		fmt.Println("Info Waktu yang cocok untuk kamu")
+	if g >= 1 && g <= 5 {
 		for i = 0; i < len(*arrJ); i++ {
-			waktu = arrJ[i].waktu
-			if (g == 1 && waktu == "Full_Time") || (g == 2 && waktu == "Kontrak") || (g == 3 && waktu == "Paruh_Waktu") || (g == 4 && waktu == "Kasual") {
-				fmt.Printf("%d. %s\n",i+1, arrJ[i].posisi)
-				fmt.Println()
-				fmt.Printf("   Waktu: %s\n", waktu)
-				fmt.Println()
-				found = true
+			for k = 0; k < len((*arrJ)[i].Rating.user); k++ {
+				rat = arrJ[i].Rating.rating[k]
+				us = arrJ[i].Rating.user[k]
+				mes = arrJ[i].Rating.message[k]
+				if (g == 1 && rat == 5) || (g == 2 && rat == 4) || (g == 3 && rat == 3) || (g == 4 && rat == 2) || (g == 5 && rat == 1) {
+					fmt.Println("================================")
+					fmt.Printf("%d. %s\n", i+1, arrJ[i].posisi)
+					fmt.Println("================================")
+					fmt.Printf("Perusahaan :%s\n", arrJ[i].perus)
+					fmt.Printf("User: %s\n", us)
+					fmt.Printf("Pesan: %s\n", mes)
+					fmt.Println()
+					found = true
+				}
 			}
+
 		}
 		if !found {
-			fmt.Println("Maaf, kami tidak menemukan waktu yang tapat untuk kamu")
+			fmt.Println("============================================")
+			fmt.Println("Maaf, kami tidak menemukan rating yang tepat")
+			fmt.Println("============================================")
 			fmt.Println("Mau balik ke menu utama? (Ketik Y or N)")
 			fmt.Scan(&x)
 			if x == "Y" {
+				clearLine()
 				infoLoker()
 			} else if x == "N" {
-				Waktu(arrJ)
+				clearLine()
+				Rating(arrJ)
 			}
-
 		}
 	}
-	fmt.Println("Apakah tertarik dengan waktu tersebut? (Ketik Y or N)")
+	fmt.Println("=======================================================")
+	fmt.Println("Apakah tertarik dengan rating tersebut? (Ketik Y or N)")
+	fmt.Println("=======================================================")
 	fmt.Scan(&y)
 	if y == "Y" {
-		fmt.Print("Pilih nomor :"," ")
+		fmt.Println("====================")
+		fmt.Println(" Pilih nomor berapa")
+		fmt.Println("====================")
 		fmt.Scan(&no)
 		no = no - 1
-		p = arrJ[no].posisi
-		o = arrJ[no].waktu
-		h = cekPTwaktu(arrJ, &p, &o)
-		if h {
-			fmt.Println("Mau tambah Komen? (Ketik Y or N)")
-			fmt.Scan(&k)
-			if k == "Y" {
-				pos = arrJ[no].posisi
-				per = arrJ[no].perus
-				tambahUlasan(arrJ, &pos, &per)
-				fmt.Println("Apakah mau diedit (Ketik '1'), dihapus (Ketik '2'), atau balik ke menu utama (Ketik '3')?")
-				fmt.Scan(&d)
-				if d == 1{
-                   editUlasan(arrJ,&pos,&per)
-				   fmt.Println("Balik ke menu utama (Ketik 'Y' or 'N') ?")
-				   fmt.Scan(&e)
-				   if e == "Y"{
-					infoLoker()
-				   }
-				}else if d == 2{
-					hapusUlasan(arrJ,&pos,&per)
-					fmt.Println("Balik ke menu utama (Ketik 'Y' or 'N') ?")
-					fmt.Scan(&e)
-					if e == "Y"{
-					 infoLoker()
-					}
-				}else if d == 3{
-					infoLoker()
-				}else {
-					fmt.Println("Invalid")
-		            Waktu(arrJ)
-				}
-			}
-		} else if y == "N" {
-			fmt.Println("Baiklah, Apakah mau cari waktu lainnya (Ketik Y or N)")
-			fmt.Scan(&x)
-			if x == "Y" {
-				Waktu(arrJ)
-			} else if x == "N" {
-				fmt.Println("Baiklah, kembali ke menu utama")
-				infoLoker()
-			}else {
-				fmt.Println("Invalid")
-		        Waktu(arrJ)
-			}
-		}else {
-			fmt.Println("Invalid")
-		    Waktu(arrJ)
+		pos = arrJ[no].posisi
+		per = arrJ[no].perus
+		Pilihposisi(arrJ, &pos, &per, &no)
+	} else if y == "N" {
+		fmt.Println("=======================================================")
+		fmt.Println("  Baiklah, Apakah mau cari rating lainnya (Ketik Y or N)")
+		fmt.Println("=======================================================")
+		fmt.Scan(&x)
+		if x == "Y" {
+			clearLine()
+			Rating(arrJ)
+		} else if x == "N" {
+			clearLine()
+			fmt.Println("================================")
+			fmt.Println(" Baiklah, kembali ke menu utama")
+			fmt.Println("================================")
+			infoLoker()
+		} else {
+			clearLine()
+			fmt.Println("!!!!!!!!!!")
+			fmt.Println(" Invalid")
+			fmt.Println("!!!!!!!!!!")
+			Rating(arrJ)
 		}
+	} else {
+		clearLine()
+		fmt.Println("!!!!!!!!!!")
+		fmt.Println(" Invalid")
+		fmt.Println("!!!!!!!!!!")
+		Rating(arrJ)
 	}
-}
-
-func cekPTwaktu(arrJ *tabJob, p, q *string) bool {
-	/* Diterima array arrJ yang berisi Jmax bilangan bulat beserta dua string p dan q, mengembalikan TRUE apabila p dan q ditemukan didalam array arrJ menggunakan sequential search */
-	var i, j, k int
-	var ketemu bool
-	ketemu = false
-	i = 0
-	hasilPT(arrJ)
-	for i < len(*arrJ) && !ketemu {
-		if arrJ[i].posisi == *p && arrJ[i].waktu == *q {
-			ketemu = true
-			output(arrJ, &i, &j, &k)
-		}
-		i++
-	}
-	return ketemu
 }
 
 func tambahUlasan(arrJ *tabJob, pos, per *string) {
 	/* IS. Terdefinisi array arrJ yang berisi Jmax bilangan bulat dan dua string pos dan per
 	   FS. Menambahkan komentar pada suatu pekerjaan dan perusahaan*/
-	var i,j int
-	var  m string
+	var i, j int
+	var m string
 	var r int
-
+	fmt.Println("===============================")
 	fmt.Println("Berapa rating (1-5)?")
 	fmt.Scan(&r)
+	if r < 0 && r > 5 {
+		clearLine()
+		fmt.Println("!!!!!!!!!!")
+		fmt.Println(" Invalid")
+		fmt.Println("!!!!!!!!!!")
+		tambahUlasan(arrJ, pos, per)
+	}
 	fmt.Println("Pesan :")
 	fmt.Scan(&m)
+	fmt.Println("===============================")
 
 	for i = 0; i < len(*arrJ); i++ {
 		if (*arrJ)[i].posisi == *pos && (*arrJ)[i].perus == *per {
@@ -1094,8 +1336,12 @@ func tambahUlasan(arrJ *tabJob, pos, per *string) {
 					(*arrJ)[i].Rating.user[j] = U
 					(*arrJ)[i].Rating.rating[j] = r
 					(*arrJ)[i].Rating.message[j] = m
+					fmt.Println("Rating : ", arrJ[i].Rating.rating[j], "\nUser : ", arrJ[i].Rating.user[j], "\nPesan :", arrJ[i].Rating.message[j])
+					fmt.Println("vvvvvvvvvvvvvvvvvvvvvvvvvvvv")
 					fmt.Println("Ulasan berhasil ditambahkan!")
+					fmt.Println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 				}
+
 			}
 		}
 	}
@@ -1106,45 +1352,57 @@ func editUlasan(arrJ *tabJob, pos, per *string) {
 	   FS. Mengedit komentar pada suatu pekerjaan dan perusahaan*/
 	var i, j, newRating int
 	var newMessage string
-	
+
 	for i = 0; i < len(*arrJ); i++ {
 		if arrJ[i].posisi == *pos {
 			for j = 0; j < len((*arrJ)[i].Rating.user); j++ {
 				if arrJ[i].Rating.user[j] == U {
+					fmt.Println("===================")
 					fmt.Println("Ratingnya jadi apa?")
 					fmt.Scan(&newRating)
 					fmt.Println("Pesannya apa?")
 					fmt.Scan(&newMessage)
+					fmt.Println("===================")
 					arrJ[i].Rating.rating[j] = newRating
 					arrJ[i].Rating.message[j] = newMessage
+					fmt.Println("Rating : ", arrJ[i].Rating.rating[j], "\nUser : ", arrJ[i].Rating.user[j], "\nPesan :", arrJ[i].Rating.message[j])
+					fmt.Println("vvvvvvvvvvvvvvvvvvvvvvv")
 					fmt.Println("Ulasan berhasil diubah!")
+					fmt.Println("^^^^^^^^^^^^^^^^^^^^^^^")
+				}
+			}
+
+		}
+	}
+}
+func hapusUlasan(arrJ *tabJob, pos, per *string) {
+	/* IS. Terdefinisi array arrJ yang berisi Jmax bilangan bulat dan dua string pos dan per
+	   FS. Menghapus komentar pada suatu pekerjaan dan perusahaan*/
+	var i, j, k int
+
+	for i = 0; i < len(*arrJ); i++ {
+		if (*arrJ)[i].posisi == *pos && (*arrJ)[i].perus == *per {
+			for j = 0; j < kmax; j++ {
+				if (*arrJ)[i].Rating.user[j] == U {
+					for k = j; k < kmax-1; k++ {
+						(*arrJ)[i].Rating.user[k] = (*arrJ)[i].Rating.user[k+1]
+						(*arrJ)[i].Rating.rating[k] = (*arrJ)[i].Rating.rating[k+1]
+						(*arrJ)[i].Rating.message[k] = (*arrJ)[i].Rating.message[k+1]
+					}
+					(*arrJ)[i].Rating.user[kmax-1] = ""
+					(*arrJ)[i].Rating.rating[kmax-1] = 0
+					(*arrJ)[i].Rating.message[kmax-1] = ""
+					fmt.Println("Rating : ", arrJ[i].Rating.rating[j], "\nUser : ", arrJ[i].Rating.user[j], "\nPesan :", arrJ[i].Rating.message[j])
+					fmt.Println("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
+					fmt.Println("Ulasan pengguna berhasil dihapus!")
+					fmt.Println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+
 				}
 			}
 		}
 	}
 }
-func hapusUlasan(arrJ *tabJob, pos, per *string) {
-    /* IS. Terdefinisi array arrJ yang berisi Jmax bilangan bulat dan dua string pos dan per
-       FS. Menghapus komentar pada suatu pekerjaan dan perusahaan*/
-    var i, j int
 
-    for i = 0; i < len(*arrJ); i++ {
-        if (*arrJ)[i].posisi == *pos && (*arrJ)[i].perus == *per {
-            for j = 0; j < kmax; j++ {
-                if (*arrJ)[i].Rating.user[j] == U {
-                    for k := j; k < kmax-1; k++ {
-                        (*arrJ)[i].Rating.user[k] = (*arrJ)[i].Rating.user[k+1]
-                        (*arrJ)[i].Rating.rating[k] = (*arrJ)[i].Rating.rating[k+1]
-                        (*arrJ)[i].Rating.message[k] = (*arrJ)[i].Rating.message[k+1]
-                    }
-                    (*arrJ)[i].Rating.user[kmax-1] = ""
-                    (*arrJ)[i].Rating.rating[kmax-1] = 0
-                    (*arrJ)[i].Rating.message[kmax-1] = ""
-
-                    fmt.Println("Ulasan pengguna berhasil dihapus!")
-                    return
-                }
-            }
-        }
-    }
+func clearLine() {
+	fmt.Print("\033[H\033[2J")
 }
