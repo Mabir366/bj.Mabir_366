@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1734584460 source:d:\materi kuliah\semester 3\struktur data\tugas praktikum\tugas_praktikum10\tubes std\main.cpp
+	<iostream>
+	"TuBes_STD_Kel1.h"
+
+1733804250 d:\materi kuliah\semester 3\struktur data\tugas praktikum\tugas_praktikum10\tubes std\tubes_std_kel1.h
+	<iostream>
+
+1734584464 source:d:\materi kuliah\semester 3\struktur data\tugas praktikum\tugas_praktikum10\tubes std\tubes_std_kel1.cpp
+	<iostream>
+	"TuBes_STD_Kel1.h"
+
